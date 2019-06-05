@@ -14,7 +14,7 @@ public final class Calculator {
         //NOOP
     }
 
-    private static <T> T calcEvenNumbersOperation(
+    private static <T> T performOperation(
             final Predicate<T> predicate,
             final BinaryOperator<T> operation,
             final T... items
@@ -37,7 +37,7 @@ public final class Calculator {
 
 
     public static Integer sumEvenNumbers(final Integer... numbers) {
-        return calcEvenNumbersOperation(
+        return performOperation(
                 i -> (i % 2 == 0),
                 Integer::sum,
                 numbers
@@ -45,7 +45,7 @@ public final class Calculator {
     }
 
     public static Integer multiplyEvenNumbers(final Integer... numbers) {
-        return calcEvenNumbersOperation(
+        return performOperation(
                 i -> (i % 2 == 0),
                 (x, y) -> x * y,
                 numbers
