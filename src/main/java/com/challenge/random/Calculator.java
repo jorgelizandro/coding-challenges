@@ -1,4 +1,4 @@
-package com.challenge.pairCoding;
+package com.challenge.random;
 
 import java.util.function.BinaryOperator;
 import java.util.function.Predicate;

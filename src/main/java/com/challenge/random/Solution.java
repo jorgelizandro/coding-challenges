@@ -1,4 +1,4 @@
-package com.challenge.pairCoding;
+package com.challenge.random;
 
 public class Solution {
 
