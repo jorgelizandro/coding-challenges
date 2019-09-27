@@ -33,7 +33,15 @@ public class NewYearChaos {
     }
 
     public static void main(final String... args) {
+
+
+        //1 2 5 3 7 8 6 4
+        //1 2 3 4 5 6 7 8
+        //1 2 3 5 4 6 7 8
+        //1 2 5 3 4 6 7 8
+
         minimumBribes(new int[]{1, 2, 5, 3, 7, 8, 6, 4});
+        //minimumBribes(new int[]{1, 2, 5, 3, 7, 8, 6, 4});
 /*
         minimumBribes(new int[]{1, 2, 5, 3, 4, 7, 8, 6});
         minimumBribes(new int[]{1, 2, 3, 7, 5, 8, 6, 4});
