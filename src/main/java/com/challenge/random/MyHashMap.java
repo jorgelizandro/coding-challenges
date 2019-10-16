@@ -45,16 +45,18 @@ public class MyHashMap<k, v> implements Map<k, v> {
 
     @Override
     public v get(Object key) {
-        int position = getPosition((k) key);
+        int position = getPosition(key);
 
         List<Entry<k, v>> slot = slots[position];
 
-        if (slot != null) {
-            for (Entry<k, v> existentEntry: slot) {
-                Object existentEntryKey = existentEntry.getKey();
-                if (Objects.equals(existentEntryKey, key)) {
-                    return existentEntry.getValue();
-                }
+        if (slot == null) {
+            return null;
+        }
+
+        for (Entry<k, v> existentEntry: slot) {
+            Object existentEntryKey = existentEntry.getKey();
+            if (Objects.equals(existentEntryKey, key)) {
+                return existentEntry.getValue();
             }
         }
 
@@ -66,6 +68,7 @@ public class MyHashMap<k, v> implements Map<k, v> {
         int position = getPosition(key);
 
         List<Entry<k, v>> slot = slots[position];
+        //Case 01: New key
         if (slot == null) {
             slot = new LinkedList<>();
             Entry<k, v> newEntry = new SimpleEntry<k, v>(key, value);
@@ -76,6 +79,7 @@ public class MyHashMap<k, v> implements Map<k, v> {
             return value;
         }
 
+        //Case 02: Duplicated key
         for (Entry<k, v> existentEntry: slot) {
             k existentEntryKey = existentEntry.getKey();
 
@@ -85,11 +89,11 @@ public class MyHashMap<k, v> implements Map<k, v> {
             }
         }
 
+        //Case 03: Collision
         Entry<k, v> newEntry = new SimpleEntry<k, v>(key, value);
         slot.add(newEntry);
 
         reHash();
-
         return value;
     }
 
@@ -114,14 +118,14 @@ public class MyHashMap<k, v> implements Map<k, v> {
         }
     }
 
-    private int getPosition(k key) {
+    private int getPosition(Object key) {
         int hashCode = Objects.hashCode(key);
         return hashCode % slots.length;
     }
 
     @Override
     public v remove(Object key) {
-        int position = getPosition((k) key);
+        int position = getPosition(key);
 
         List<Entry<k, v>> slot = slots[position];
         if (slot != null) {
