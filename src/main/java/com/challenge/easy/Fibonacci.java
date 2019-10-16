@@ -1,4 +1,4 @@
-package com.challenge.random;
+package com.challenge.easy;
 
 public class Fibonacci {
 
@@ -7,12 +7,8 @@ public class Fibonacci {
             throw new IllegalArgumentException("The number must be positive");
         }
 
-        if (number == 0) {
-            return 0;
-        }
-
-        if (number == 1) {
-            return 1;
+        if (number == 0 || number == 1) {
+            return number;
         }
 
         return getRecursive(number - 2) + getRecursive(number - 1);
