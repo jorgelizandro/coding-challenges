@@ -21,23 +21,23 @@ public class PosfixCalculator {
                 int value2;
                 switch (item) {
                     case "+":
-                        value1 = valuesStack.pop();
                         value2 = valuesStack.pop();
+                        value1 = valuesStack.pop();
                         valuesStack.push(value1 + value2);
                         break;
                     case "-":
-                        value1 = valuesStack.pop();
                         value2 = valuesStack.pop();
+                        value1 = valuesStack.pop();
                         valuesStack.push(value1 - value2);
                         break;
                     case  "*":
-                        value1 = valuesStack.pop();
                         value2 = valuesStack.pop();
+                        value1 = valuesStack.pop();
                         valuesStack.push(value1 * value2);
                         break;
                     case "/":
-                        value1 = valuesStack.pop();
                         value2 = valuesStack.pop();
+                        value1 = valuesStack.pop();
                         valuesStack.push(value1 / value2);
                         break;
                     case "!":
@@ -55,5 +55,6 @@ public class PosfixCalculator {
 
     public static void main(final String... args) {
         System.out.println(getResult("1 2 + 2 + !"));   //120
+        System.out.println(getResult("1 0 1 / + !"));   //120
     }
 }
